@@ -1,8 +1,28 @@
+<div class="rr-controls-panel">
+  <div class="rr-sort-panel">
+    <button class="rr-sort-button" data-test-rr="sort-by-rating-desc">
+      Rating
+      {{fa-icon "angle-down"}}
+    </button>
+    <button class="rr-sort-button" data-test-rr="sort-by-rating-asc">
+      Rating
+      {{fa-icon "angle-up"}}
+    </button>
+    <button class="rr-sort-button" data-test-rr="sort-by-title-desc" onclick={{action (mut sortBy) 'titleDesc'}}>
+      Title
+      {{fa-icon "angle-down"}}
+    </button>
+    <button class="rr-sort-button" data-test-rr="sort-by-title-asc">
+      Title
+      {{fa-icon "angle-up"}}
+    </button>
+  </div>
+</div>
 <ul class="rr-list">
-  {{#each model.songs as |song|}}
-    <li class="rr-list-item">
+  {{#each sortedSongs as |song|}}
+    <li class="rr-list-item" data-test-rr="song-list-item">
       {{song.title}}
-      {{star-rating class="fr" rating=song.rating}}
+      {{star-rating class="fr" rating=song.rating item=song onClick=(action 'updateRating' song)}}
     </li>
   {{else}}
     <li class="rr-empty-message">
@@ -12,18 +32,18 @@
 </ul>
 <div class="rr-new-label">
   {{#if isAddingSong}}
-    <form class="rr-inline-form" onsubmit={{action "saveSong"}}>
+    <form class="rr-inline-form" data-test-rr="new-song-form" onsubmit={{action "saveSong"}}>
       {{input type="text" class="rr-input" value=newSongTitle
-              placeholder="New song"}}
+              placeholder="New song" data-test-rr="new-song-input"}}
       <div class="rr-inline-form-group ml-auto">
-        <button type="submit" class="rr-action-button"
+        <button type="submit" class="rr-action-button" data-test-rr="new-song-button"
                 disabled={{isAddButtonDisabled}}>Add</button>
         <span class="rr-cancel-icon" onclick={{action
           "cancelAddSong"}}>{{fa-icon "times"}}</span>
       </div>
     </form>
   {{else}}
-    <label onclick={{action "addSong"}}>
+    <label data-test-rr="new-song-label" onclick={{action "addSong"}}>
       {{fa-icon "plus"}}
       <span class="ml1">Add new song</span>
     </label>

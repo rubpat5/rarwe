@@ -25,10 +25,20 @@ a {
   margin: 40px 0 20px;
   border-bottom: 1px solid;
 }
-.rr-page-header > .rr-app-title {
+.rr-header-link > .rr-app-title {
   margin-top: 0;
   margin-bottom: 0;
 }
+.rr-panel {
+  padding: 1rem;
+  border: .125rem solid;
+  border-radius: .125rem;
+}
+.rr-textarea {
+  width: 100%;
+  padding: .5rem;
+}
+
 .rr-app-title > .rr-subtitle {
   font-weight: normal;
 }
@@ -86,4 +96,35 @@ a {
 }
 .rr-band-link.active > .rr-pointer {
   display: inline-block;
+}
+#ember-testing-container {
+  font-family: 'avenir next', avenir, sans-serif;
+  color: var(--near-white);
+  background-color: var(--moon-gray) !important;
+}
+.rr-controls-panel {
+  display: flex;
+  padding-left: 1rem;
+  padding-right: 0;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+.rr-search-panel {
+  margin-left: auto;
+}
+.rr-sort-button {
+  background-color: var(--mid-grey);
+  color: var(--near-white);
+  border-radius: .125rem;
+  padding: .25rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  cursor: pointer;
+}
+.rr-search-button {
+  border-radius: .125rem;
+  padding: .25rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  margin-left: -5px;
 }
