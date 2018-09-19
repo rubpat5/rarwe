@@ -4,6 +4,10 @@ import { computed } from '@ember/object';
 import { capitalize } from 'rarwe/helpers/capitalize';
 
 export default Controller.extend({
+  queryParams: {
+    sortBy: 'sort',
+    searchTerm: 's',
+  },
   isAddingSong: false,
   newSongTitle: '',
   isAddButtonDisabled: empty('newSongTitle'),
@@ -17,7 +21,13 @@ export default Controller.extend({
     };
     return options[this.sortBy];
   }),
-  sortedSongs: sort('model.songs', 'sortProperties'),
+  sortedSongs: sort('matchingSongs', 'sortProperties'),
+  searchTerm: '',
+  matchingSongs: computed('model.songs.@each.title', 'searchTerm',
+    function() {
+      const searchTerm = this.searchTerm.toLowerCase();
+      return this.model.get('songs').filter((song) => song.title.toLowerCase().includes(searchTerm));
+    }),
   newSongPlaceholder: computed('model.name', function() {
     const bandName = this.model.name;
     return `New ${capitalize(bandName)} song`;
