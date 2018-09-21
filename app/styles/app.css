@@ -21,6 +21,9 @@ a {
   }
 }
 .rr-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 9px;
   margin: 40px 0 20px;
   border-bottom: 1px solid;
@@ -113,7 +116,7 @@ a {
   margin-left: auto;
 }
 .rr-sort-button {
-  background-color: var(--mid-grey);
+  background-color: var(--moon-gray);
   color: var(--near-white);
   border-radius: .125rem;
   padding: .25rem;
@@ -127,4 +130,61 @@ a {
   padding-left: .5rem;
   padding-right: .5rem;
   margin-left: -5px;
+}
+.rr-user-panel {
+  margin-left: auto;
+}
+.rr-signin-button {
+  background-color: inherit;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.rr-form-container {
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width: 60em) and (max-width: 100em) {
+  .rr-form-container {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 100em) {
+  .rr-form-container {
+    width: 40%;
+  }
+}
+.rr-form-inline-row {
+  margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.rr-button-panel {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+}
+.rr-form-footer > .rr-cta {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+.rr-inline-form-row {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.rr-cancel-icon-left {
+  align-self: center;
+  margin-right: .25rem; /* .mr1 */
+}
+.rr-form-field-error {
+  width: 100%;
+  margin: .25em 0;
+  color: var(--red);
 }
