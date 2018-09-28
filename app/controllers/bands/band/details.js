@@ -3,6 +3,15 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   isEditing: false,
+  showErrors: computed('_showErrors', {
+    get() {
+      return this._showErrors || { description: false };
+    },
+    set(key, value) {
+      this.set('_showErrors', value);
+      return this._showErrors;
+    }
+  }),
 
   showErrors: computed('_showErrors', {
     get() {
@@ -19,7 +28,9 @@ export default Controller.extend({
       this.set('isEditing', true);
     },
     async save() {
-      let band = this.model;
+      const band = this.model;
+      this.set('showErrors.description', true);
+      if (band.validations.isValid) {
       this.set('showErrors.description', true);
       if (band.validations.isValid) {
         await band.save();
